@@ -25,6 +25,7 @@ def fix_settings(env):
         # MEDIA_ROOT = %(MEDIA_ROOT)s,
         # STATICFILES_DIRS = %(STATICFILES_DIRS)s,
         DATABASES = %(DATABASES)s,
+        # env['INSTALLED_APPS'].append('debug_toolbar')
         # ...
     )
 ''' % dict(
@@ -58,6 +59,10 @@ def fix_settings(env):
 else:
     fix_settings(locals())
     del(fix_settings)
+
+if 'debug_toolbar' in INSTALLED_APPS and \
+        'debug_toolbar.middleware.DebugToolbarMiddleware' not in MIDDLEWARE_CLASSES:
+    MIDDLEWARE_CLASSES.insert(0, 'debug_toolbar.middleware.DebugToolbarMiddleware')
 
 if locals().get('SECRET_KEY') is None:
     if 2 == sys.version_info.major:

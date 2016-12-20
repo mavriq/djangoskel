@@ -12,12 +12,14 @@ sys.path += [
 
 
 INSTALLED_APPS = [
+    'django.contrib.admindocs',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'debug_toolbar',
     # 'app.myapp',
 ]
 
@@ -30,6 +32,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.admindocs.middleware.XViewMiddleware',
 ]
 
 ROOT_URLCONF = 'settings.urls'
@@ -112,4 +115,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'content', 'media')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'content', 'static'),
+]
+
+INTERNAL_IPS = [
+    '127.0.0.1',
 ]
