@@ -25,7 +25,6 @@ def fix_settings(env):
         # MEDIA_ROOT = %(MEDIA_ROOT)s,
         # STATICFILES_DIRS = %(STATICFILES_DIRS)s,
         DATABASES = %(DATABASES)s,
-        # env['INSTALLED_APPS'].append('debug_toolbar')
 
         # # https://docs.djangoproject.com/en/1.8/ref/settings/#email
         # ADMINS = [('admin', 'admin@localhost'), ],
@@ -40,6 +39,7 @@ def fix_settings(env):
 
         # ...
     )
+    # env['INSTALLED_APPS'].append('debug_toolbar')
 ''' % dict(
             LANGUAGE_CODE=repr(LANGUAGE_CODE),
             TIME_ZONE=repr(TIME_ZONE),
