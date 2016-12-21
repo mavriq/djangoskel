@@ -26,6 +26,18 @@ def fix_settings(env):
         # STATICFILES_DIRS = %(STATICFILES_DIRS)s,
         DATABASES = %(DATABASES)s,
         # env['INSTALLED_APPS'].append('debug_toolbar')
+
+        # # https://docs.djangoproject.com/en/1.8/ref/settings/#email
+        # ADMINS = [('admin', 'admin@localhost'), ],
+        # SERVER_EMAIL = 'django@localhost'
+        # EMAIL_HOST = 'localhost',
+        # EMAIL_PORT = 587,
+        # EMAIL_HOST_USER = 'webmaster',
+        # EMAIL_HOST_PASSWORD = 'secure',
+        # EMAIL_USE_TLS = True,
+        # EMAIL_SUBJECT_PREFIX = '[Django] '
+        # DEFAULT_FROM_EMAIL = 'webmaster@localhost',
+
         # ...
     )
 ''' % dict(
