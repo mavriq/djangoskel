@@ -41,6 +41,9 @@ def fix_settings(env):
 
         # ...
     )
+    ## Only for development
+    # AUTH_PASSWORD_VALIDATORS = []
+    ## only if django-debug-toolbar installed
     # env['INSTALLED_APPS'].append('debug_toolbar')
 ''' % dict(
             LANGUAGE_CODE=repr(LANGUAGE_CODE),
