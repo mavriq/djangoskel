@@ -3,6 +3,7 @@
 Универсальный Django settings.
 """
 
+from __future__ import unicode_literals
 import os
 import sys
 from .settings import *
@@ -14,7 +15,8 @@ except ImportError:
     try:
         from .localsettings import *
     except ImportError:
-        _locsettings = u'''# -*- coding: utf-8 -*-
+        _locsettings = '''# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 
 def fix_settings(env):
     assert isinstance(env, dict)
