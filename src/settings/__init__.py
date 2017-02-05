@@ -39,10 +39,10 @@ def fix_settings(env):
         # EMAIL_SUBJECT_PREFIX = '[Django] '
         # DEFAULT_FROM_EMAIL = 'webmaster@localhost',
 
+        ## Only for development
+        # AUTH_PASSWORD_VALIDATORS = []
         # ...
     )
-    ## Only for development
-    # AUTH_PASSWORD_VALIDATORS = []
     ## only if django-debug-toolbar installed
     # env['INSTALLED_APPS'].append('debug_toolbar')
 ''' % dict(
