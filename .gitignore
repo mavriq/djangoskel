@@ -8,18 +8,22 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-env/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
+
+/bin
+/build
+/develop-eggs
+/dist
+/downloads
+/eggs
+/.eggs
+/env
+/include
+/lib
+/lib64
+/parts
+/sdist
+/var
+/pip-selfcheck.json
 *.egg-info/
 .installed.cfg
 *.egg
