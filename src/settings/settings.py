@@ -6,10 +6,8 @@ import sys
 
 SRC_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(SRC_DIR)
-sys.path += [
-    os.path.join(SRC_DIR, 'lib'),
-    os.path.join(BASE_DIR, 'lib'),
-]
+for _d in (os.path.join(SRC_DIR, 'lib'), os.path.join(SRC_DIR, 'app')):
+    sys.path.insert(0, _d)
 
 
 INSTALLED_APPS = [
@@ -20,8 +18,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'debug_toolbar',
-    # 'app.myapp',
+    # 'myapp',
 ]
 
 MIDDLEWARE_CLASSES = [

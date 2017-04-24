@@ -21,30 +21,33 @@ from __future__ import unicode_literals
 def fix_settings(env):
     assert isinstance(env, dict)
     env.update(
-        DEBUG = True,
-        # LANGUAGE_CODE = %(LANGUAGE_CODE)s,
-        # TIME_ZONE = %(TIME_ZONE)s,
-        # MEDIA_ROOT = %(MEDIA_ROOT)s,
-        # STATICFILES_DIRS = %(STATICFILES_DIRS)s,
-        DATABASES = %(DATABASES)s,
+        DEBUG=True,
+        # LANGUAGE_CODE=%(LANGUAGE_CODE)s,
+        # TIME_ZONE=%(TIME_ZONE)s,
+        # MEDIA_ROOT=%(MEDIA_ROOT)s,
+        # STATICFILES_DIRS=%(STATICFILES_DIRS)s,
+        DATABASES=%(DATABASES)s,
 
         # # https://docs.djangoproject.com/en/1.8/ref/settings/#email
-        # ADMINS = [('admin', 'admin@localhost'), ],
-        # SERVER_EMAIL = 'django@localhost'
-        # EMAIL_HOST = 'localhost',
-        # EMAIL_PORT = 587,
-        # EMAIL_HOST_USER = 'webmaster',
-        # EMAIL_HOST_PASSWORD = 'secure',
-        # EMAIL_USE_TLS = True,
-        # EMAIL_SUBJECT_PREFIX = '[Django] '
-        # DEFAULT_FROM_EMAIL = 'webmaster@localhost',
+        # ADMINS=[('admin', 'admin@localhost'), ],
+        # SERVER_EMAIL='django@localhost'
+        # EMAIL_HOST='localhost',
+        # EMAIL_PORT=587,
+        # EMAIL_HOST_USER='webmaster',
+        # EMAIL_HOST_PASSWORD='secure',
+        # EMAIL_USE_TLS=True,
+        # EMAIL_SUBJECT_PREFIX='[Django] '
+        # DEFAULT_FROM_EMAIL='webmaster@localhost',
 
         ## Only for development
-        # AUTH_PASSWORD_VALIDATORS = []
+        # AUTH_PASSWORD_VALIDATORS=[]
         # ...
     )
-    ## only if django-debug-toolbar installed
-    # env['INSTALLED_APPS'].append('debug_toolbar')
+    if env['DEBUG']:
+        ## only if django-debug-toolbar installed
+        # env['INSTALLED_APPS'].append('debug_toolbar')
+        # env['INTERNAL_IPS'] = ['127.0.0.1', ]
+        pass
 ''' % dict(
             LANGUAGE_CODE=repr(LANGUAGE_CODE),
             TIME_ZONE=repr(TIME_ZONE),
@@ -72,7 +75,9 @@ def fix_settings(env):
                 from .localsettings import *
             except ImportError:
                 raise ImportError("WARNING: Can't load or create {0}".format(
-                    os.path.join(os.path.basename(os.path.abspath(__file__)), 'localsettings.py')))
+                    os.path.join(
+                        os.path.basename(os.path.abspath(__file__)),
+                        'localsettings.py')))
 else:
     fix_settings(locals())
     del(fix_settings)
@@ -97,4 +102,6 @@ if locals().get('SECRET_KEY') is None:
             _SECRET_FILE.close()
             del(_SECRET_FILE, _SECRET_FILE_NAME, chars)
         except IOError:
-            Exception('Please, create a {0} file with random characters to generate your secret key'.format(_SECRET_FILE_NAME))
+            Exception(
+                'Please, create a {0} file with random characters '
+                'to generate your secret key'.format(_SECRET_FILE_NAME))
