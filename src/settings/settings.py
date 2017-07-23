@@ -19,6 +19,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 'myapp',
+    # 'app.external_app_example',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -65,8 +66,20 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'private', 'db.sqlite3'),
-    }
+    },
+    # 'ext_db': {
+    #     'ENGINE': '...',
+    #     'NAME': '...',
+    #     'applications': ['external_app_example', ],
+    #     'allow_migrate': False,
+    # },
 }
+
+
+# DATABASE_ROUTERS = [
+#     'settings.dbrouter.DbByAppRouter',
+#     'settings.dbrouter.RestrictMigrations',
+# ]
 
 
 # Password validation
