@@ -4,10 +4,14 @@
 """
 
 from __future__ import unicode_literals
-import os
 import sys
+if sys.version_info[0] == 2:
+    reload(sys).setdefaultencoding("utf-8")
+
+import os
 from .settings import *
 from pprint import pformat
+
 
 try:
     from .localsettings import fix_settings
