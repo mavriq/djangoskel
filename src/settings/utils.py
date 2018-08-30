@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import unicode_literals
+import sys
 from django.utils.six import string_types, integer_types
 import logging
 import time
@@ -91,7 +92,8 @@ def debug_method(fn=None, debug_level=None):
             _log(_start_msg)
             try:
                 _result = fn(*args, **kwargs)
-            except Exception as e:
+            except Exception:
+                e = sys.exc_info()
                 _exception_msg = '<{0:x}>: exception {1}'.format(_hash, e)
                 _log(_exception_msg)
                 raise e

@@ -117,6 +117,36 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOGGING = {
+    'version': 1,
+    'formatters': {
+        'verbose': {
+            'format': (
+                '%(levelname)s '
+                '%(asctime)s '
+                '%(pathname)s:%(lineno)d '
+                '%(module)s '
+                '%(process)d %(thread)d %(message)s'),
+        },
+        'simple': {'format': '%(levelname)s %(message)s'}
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            # 'formatter': 'simple',
+            'formatter': 'verbose',
+        }
+    },
+    'loggers': {
+        '': {
+            'handlers': ['console'],
+            # 'propagate': True,
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+        },
+    },
+}
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
