@@ -9,13 +9,8 @@ import sys
 from .settings import *
 from pprint import pformat
 
-try:
-    from .localsettings import fix_settings
-except ImportError:
-    try:
-        from .localsettings import *
-    except ImportError:
-        _locsettings = '''# -*- coding: utf-8 -*-
+
+__locsettings_template = '''# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 def fix_settings(env):
@@ -48,7 +43,16 @@ def fix_settings(env):
         # env['INSTALLED_APPS'].append('debug_toolbar')
         # env['INTERNAL_IPS'] = ['127.0.0.1', ]
         pass
-''' % dict(
+'''
+
+
+try:
+    from .localsettings import fix_settings
+except ImportError:
+    try:
+        from .localsettings import *
+    except ImportError:
+        _locsettings = __locsettings_template % dict(
             LANGUAGE_CODE=repr(LANGUAGE_CODE),
             TIME_ZONE=repr(TIME_ZONE),
             MEDIA_ROOT=repr(MEDIA_ROOT),
@@ -82,9 +86,12 @@ else:
     fix_settings(locals())
     del(fix_settings)
 
-if 'debug_toolbar' in INSTALLED_APPS and \
-        'debug_toolbar.middleware.DebugToolbarMiddleware' not in MIDDLEWARE_CLASSES:
-    MIDDLEWARE_CLASSES.insert(0, 'debug_toolbar.middleware.DebugToolbarMiddleware')
+
+if ('debug_toolbar' in INSTALLED_APPS and
+        'debug_toolbar.middleware.DebugToolbarMiddleware' not in
+        MIDDLEWARE_CLASSES):
+    MIDDLEWARE_CLASSES.insert(
+        0, 'debug_toolbar.middleware.DebugToolbarMiddleware')
 
 if locals().get('SECRET_KEY') is None:
     if 2 == sys.version_info.major:
