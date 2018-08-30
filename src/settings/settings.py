@@ -6,8 +6,8 @@ import sys
 
 SRC_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(SRC_DIR)
-for _d in (os.path.join(SRC_DIR, 'lib'), os.path.join(SRC_DIR, 'app')):
-    sys.path.insert(0, _d)
+
+sys.path.insert(0, os.path.join(SRC_DIR, 'apps'))
 
 
 INSTALLED_APPS = [
