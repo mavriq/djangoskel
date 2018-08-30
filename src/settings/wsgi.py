@@ -10,6 +10,11 @@ https://docs.djangoproject.com/en/1.9/howto/deployment/wsgi/
 """
 
 from __future__ import unicode_literals
+import sys
+if sys.version_info[0] == 2:
+    reload(sys).setdefaultencoding("utf-8")
+
+
 import os
 from django.core.wsgi import get_wsgi_application
 
