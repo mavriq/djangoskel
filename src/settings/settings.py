@@ -10,6 +10,29 @@ BASE_DIR = os.path.dirname(SRC_DIR)
 sys.path.insert(0, os.path.join(SRC_DIR, 'apps'))
 
 
+PRIVATE_ROOT = (os.environ.get('DJANGO_PRIVATE_ROOT') or
+                os.path.join(BASE_DIR, 'content', 'private'))
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.9/howto/static-files/
+
+STATIC_URL = '/static/'
+STATIC_ROOT = (os.environ.get('DJANGO_STATIC_ROOT') or
+               os.path.join(BASE_DIR, 'content', 'static'))
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = (os.environ.get('DJANGO_MEDIA_ROOT') or
+              os.path.join(BASE_DIR, 'content', 'media'))
+
+STATICFILES_DIRS = [
+    os.path.join(SRC_DIR, 'static'),
+]
+
+LOCALE_PATHS = [
+    os.path.join(PRIVATE_ROOT, 'locale')
+]
+
+
 INSTALLED_APPS = [
     'django.contrib.admindocs',
     'django.contrib.admin',
@@ -18,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'rosetta',
     # 'myapp',
 ]
 
@@ -64,7 +88,7 @@ WSGI_APPLICATION = 'settings.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'private', 'db.sqlite3'),
+        'NAME': os.path.join(PRIVATE_ROOT, 'db.sqlite3'),
     }
 }
 
@@ -104,19 +128,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
-
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'content', 'static')
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'content', 'media')
-
-STATICFILES_DIRS = [
-    os.path.join(SRC_DIR, 'static'),
-]
 
 INTERNAL_IPS = [
     '127.0.0.1',

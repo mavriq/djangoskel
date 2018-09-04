@@ -100,7 +100,7 @@ if ('debug_toolbar' in INSTALLED_APPS and
 if locals().get('SECRET_KEY') is None:
     if 2 == sys.version_info.major:
         FileNotFoundError = IOError
-    _SECRET_FILE_NAME = os.path.join(BASE_DIR, 'private', 'secret.txt')
+    _SECRET_FILE_NAME = os.path.join(PRIVATE_ROOT, 'secret.txt')
     try:
         SECRET_KEY = open(_SECRET_FILE_NAME).read().strip()
     except FileNotFoundError:
