@@ -11,18 +11,18 @@ sys.path.insert(0, os.path.join(SRC_DIR, 'apps'))
 
 
 PRIVATE_ROOT = (os.environ.get('DJANGO_PRIVATE_ROOT') or
-                os.path.join(BASE_DIR, 'content', 'private'))
+                os.path.join(BASE_DIR, 'data', 'private'))
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
 STATIC_ROOT = (os.environ.get('DJANGO_STATIC_ROOT') or
-               os.path.join(BASE_DIR, 'content', 'static'))
+               os.path.join(BASE_DIR, 'data', 'static'))
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = (os.environ.get('DJANGO_MEDIA_ROOT') or
-              os.path.join(BASE_DIR, 'content', 'media'))
+              os.path.join(BASE_DIR, 'data', 'media'))
 
 STATICFILES_DIRS = [
     os.path.join(SRC_DIR, 'static'),

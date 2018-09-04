@@ -1,3 +1,11 @@
+# Catalogs with data
+/data/media/*
+/data/private/*
+/data/static/*
+!/data/media/.keep
+!/data/private/.keep
+!/data/static/.keep
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
