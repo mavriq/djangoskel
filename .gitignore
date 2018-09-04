@@ -30,6 +30,7 @@ __pycache__/
 /lib64
 /parts
 /sdist
+/share
 /var
 /pip-selfcheck.json
 *.egg-info/
