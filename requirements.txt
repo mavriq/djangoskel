@@ -1,0 +1,9 @@
+
+# Django
+# psycopg2-binary
+# mysqlclient
+# django-debug-toolbar
+# ipython
+# git+https://github.com/mavriq/django-dbrouter.git
+
+# -e ./pip/some-secret-package/
