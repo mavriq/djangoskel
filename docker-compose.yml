@@ -1,0 +1,21 @@
+# docker-compose.yml
+
+version: '2'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+      - PYTHON_VERSION=3.6
+    volumes:
+    - ./data:/srv/data
+    - ./src:/srv/src
+    user: '${APP_UID}:${APP_GID}'
+    command:
+    - python
+    - ./manage
+    - runserver
+    - "0.0.0.0:8007"
+    ports:
+    - "8007:8007"
